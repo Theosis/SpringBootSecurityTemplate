@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org " xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="www.thymeleaf.org " xmlns:sec="www.thymeleaf.org/extras/spring-security3">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -29,9 +29,21 @@
     <div sec:authorize="hasAuthority('ADMIN')" >
         This content is only shown to administrators.
     </div>
+      <div sec:authorize="hasRole('ROLE_USER')" >
+        This content is only shown to users, and uses the "has Role METHOD".
+    </div>
     <div sec:authorize="hasAuthority('USER')" >
         This content is only shown to users.
     </div>
+
+  <div th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}">
+        This will only be displayed if authenticated user has role ROLE_USER, which seems not to work.
+    </div>
+    
+      <div th:if="${#authorization.expression('hasAuthority(''ROLE_USER'')')}">
+        This will only be displayed if authenticated user has role ROLE_USER, which seems to work.
+    </div>
+
 
 </div><!-- /.container -->
 
