@@ -25,11 +25,12 @@ public class DataLoader implements CommandLineRunner{
     public void run(String... strings) throws Exception {
         System.out.println("Loading data . . .");
 
-        roleRepository.save(new Role("USER"));
-        roleRepository.save(new Role("ADMIN"));
+//        roleRepository.save(new Role("USER"));
+        roleRepository.save(new Role("ROLE_USER"));
+        roleRepository.save(new Role("ROLE_ADMIN"));
 
-        Role adminRole = roleRepository.findByRole("ADMIN");
-        Role userRole = roleRepository.findByRole("USER");
+        Role adminRole = roleRepository.findByRole("ROLE_ADMIN");
+        Role userRole = roleRepository.findByRole("ROLE_USER");
 
         User user = new User("bob@bob.com","bob","Bob","Bobberson", true, "bob");
         user.setRoles(Arrays.asList(userRole));

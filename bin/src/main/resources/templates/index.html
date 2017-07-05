@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org " xmlns:sec="www.thymeleaf.org/extras/spring-security3">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <th:block th:replace="base :: head"></th:block>
+</head>
+<body>
+<th:block th:replace="base :: nav"></th:block>
+
+<div class="container">
+    <br /><br />
+    <div class="starter-template">
+        <h1>SecureBones</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br /> All you get is this text and a mostly barebones HTML document.</p>
+    </div>
+    <div sec:authentication="name">
+        The value of the "name" property of the authentication object should appear here.
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        This content is only shown to authenticated users.<br />
+        Logged user: <span sec:authentication="name">Bob</span><br />
+        Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+    </div>
+    <div sec:authorize="hasAuthority('ADMIN')" >
+        This content is only shown to administrators.
+    </div>
+      <div sec:authorize="hasRole('ROLE_USER')" >
+        This content is only shown to users, and uses the "has Role METHOD".
+    </div>
+    <div sec:authorize="hasAuthority('USER')" >
+        This content is only shown to users.
+    </div>
+
+  <div th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}">
+        This will only be displayed if authenticated user has role ROLE_USER, which seems not to work.
+    </div>
+    
+      <div th:if="${#authorization.expression('hasAuthority(''ROLE_USER'')')}">
+        This will only be displayed if authenticated user has role ROLE_USER, which seems to work.
+    </div>
+
+
+</div><!-- /.container -->
+
+<th:block th:replace="base :: footlinks"></th:block>
+</body>
+</html>
