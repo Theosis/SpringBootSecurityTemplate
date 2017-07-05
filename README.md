@@ -1,5 +1,5 @@
 # SpringBootSecurityTemplate
-Cloned from https://github.com/ajhenley/securityBones - a Spring Boot Security Starter template
+(from Fi)
 
 This contains additions to troubleshoot Thymeleaf with Spring Security. The hasRole method does not perform its expected function, and other features do not work as expected. This project includes them in an effort to explain inconsistencies in performance.
 
