@@ -5,7 +5,8 @@ This contains additions to troubleshoot Thymeleaf with Spring Security. The hasR
 
 To use this project:
 
-Create a database called secbones
-Open the project with your IDE of choice
-Run the project as a Spring Boot application
+- Create a database called secbones
+- Open the project with your IDE of choice
+- Run the project as a Spring Boot application
+
 Users have been seeded, so look in the code for their respective usernames and passwords.
