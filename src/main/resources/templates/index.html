@@ -26,13 +26,13 @@
         Logged user: <span sec:authentication="name">Bob</span><br />
         Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
     </div>
-    <div sec:authorize="hasAuthority('ADMIN')" >
+    <div sec:authorize="hasAuthority('ROLE_ADMIN')" >
         This content is only shown to administrators.
     </div>
       <div sec:authorize="hasRole('ROLE_USER')" >
         This content is only shown to users, and uses the "has Role METHOD".
     </div>
-    <div sec:authorize="hasAuthority('USER')" >
+    <div sec:authorize="hasAuthority('ROLE_USER')" >
         This content is only shown to users.
     </div>
 
